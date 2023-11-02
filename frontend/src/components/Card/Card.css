@@ -1,0 +1,39 @@
+.card{
+    padding: 14px;
+    background-color: var(--primary-bg-color);
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    position: relative;
+}
+.edit{
+    cursor: pointer;
+    height: 1.5rem;
+}
+
+.editdelete{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px;
+
+}
+
+.card > :first-child{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    
+    
+}
+.card > div{
+    padding: 0.5rem;
+}
+.status{
+    width: 2rem;
+    position: absolute;
+    margin-top: -1rem;
+    margin-left: -1.5rem;
+    cursor:pointer;
+}

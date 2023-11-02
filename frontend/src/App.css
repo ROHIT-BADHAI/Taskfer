@@ -1,0 +1,22 @@
+
+:root {
+  --primary-bg-color: #121212;
+  --secondary-bg-color: #1c1c1c;
+  --text-color: #eee;
+  --button-color: #ff4668;
+}
+body{
+  /* font-family: 'Changa', sans-serif; */
+  font-family: 'DM Serif Display', serif;
+  color: var(--text-color);
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+  
+}
+*{
+  margin: 0;
+  padding: 0;
+  
+}
+

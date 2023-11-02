@@ -1,0 +1,34 @@
+.Navbar{
+    display: flex;
+    background-color: var(--secondary-bg-color);
+    font-size: 1.2rem; 
+    height: 1.5rem; 
+    border-radius: 4px;
+    align-items: center;
+    height: 64px;
+    margin: 12px;
+    justify-content: space-between;
+
+}
+.searchbar > span {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-bg-color);
+    color: var(--text-color);
+    padding: 8px;
+    border-radius: 4px;
+  }
+  .searchbar-input{
+    background-color: var(--primary-bg-color);
+    color: var(--text-color);
+    width: 100%;
+    border: none;
+    margin-left: 4px;
+    line-height: 18px;
+    font-size: 16px;
+    outline: none;
+  }
+
+.logo{
+  cursor: pointer;
+}

@@ -1,0 +1,29 @@
+.sort,.filter{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 14px;
+    padding: 14px;
+}
+
+
+.sortItem,.filterItem{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    accent-color: var(--button-color);
+    
+}
+
+.filterSort{
+    background-color: var(--secondary-bg-color);
+    width: 20%;
+    height: 100vh;
+    
+}
+.filterInput, .sortInput{
+    margin-right: 10px;
+    height: 1rem;
+    width: 1rem;
+    
+}
