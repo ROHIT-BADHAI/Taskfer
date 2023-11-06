@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 const taskRoutes=require('./routes/taskRoutes')
 const userRouter=require('./routes/userRoutes')
 const cors=require('cors');
-app.use(cors())   //please setup orgins here later once deployed
+app.use(cors())   //please setup origins here later once deployed
 app.use(express.json());
 app.use('/',userRouter);
 app.use('/',taskRoutes);
