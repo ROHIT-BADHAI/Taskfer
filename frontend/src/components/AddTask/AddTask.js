@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./index.css";
 import add from '../../assests/add_4210903.png'
 import { Link } from "react-router-dom";

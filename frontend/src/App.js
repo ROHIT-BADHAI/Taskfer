@@ -13,7 +13,6 @@ import { BookmarkContextProvider } from "./context/BookmarkContext";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/Signup/Signup";
 import { useAuthContext } from "./context/authContext";
-
 function App() {
   const {user}=useAuthContext();
   return (

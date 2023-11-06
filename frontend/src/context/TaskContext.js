@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Toast } from "../components/Toast/Toast";
 import { useAuthContext } from "./authContext";
+const taskferServer="https://taskferserver.vercel.app"
 const taskContext = createContext({
   task: [],
   editTask: () => {},
@@ -17,7 +18,7 @@ export function TaskContextProvider({ children }) {
     
     
     let getData = async () => {
-      let data = await axios.get("http://localhost:3000/tasks", {
+      let data = await axios.get(taskferServer+"/tasks", {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -25,7 +26,7 @@ export function TaskContextProvider({ children }) {
       setTask(data.data);
     };
     try {
-      if (user.token) getData();
+      if (user?.token) getData();
     } catch (err) {
       console.log(err);
     }
@@ -33,7 +34,7 @@ export function TaskContextProvider({ children }) {
 
   async function removeTask(_id) {
     if (user.token) {
-      await axios.delete(`http://localhost:3000/tasks/${_id}`, {
+      await axios.delete(taskferServer+`/tasks/${_id}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -48,8 +49,7 @@ export function TaskContextProvider({ children }) {
 
   async function editTask(editedTask) {
     if (user.token) {
-      await axios.put(
-        `http://localhost:3000/tasks/${editedTask._id}`,
+      await axios.put(taskferServer+`/tasks/${editedTask._id}`,
         editedTask,
         {
           headers: {
@@ -67,7 +67,7 @@ export function TaskContextProvider({ children }) {
 
   function addTask(taskItem) {
     if (user.token) {
-      axios.post("http://localhost:3000/tasks", taskItem, {
+      axios.post(taskferServer+"/tasks", taskItem, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },

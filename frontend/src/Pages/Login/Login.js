@@ -3,6 +3,7 @@ import { Toast } from "../../components/Toast/Toast";
 import React, { useState } from "react";
 import { useAuthContext } from "../../context/authContext";
 import { Link } from "react-router-dom";
+const taskferServer="https://taskferserver.vercel.app"
 function Login() {
   const { login } = useAuthContext();
   const [user, setUser] = useState({
@@ -27,7 +28,7 @@ function Login() {
       return;
     }
     try{
-    const response = await axios.post("http://localhost:3000/login ", user);
+    const response = await axios.post(taskferServer+"/login ", user);
       login(response.data);
       localStorage.setItem("user", JSON.stringify(response.data));
     }

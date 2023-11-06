@@ -16,7 +16,6 @@ export const  AuthContextProvider=({children})=>{
   },[])
 
     function login(userData) {
-      console.log(userData);
       setUser(userData)
     }
 
