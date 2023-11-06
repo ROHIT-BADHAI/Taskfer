@@ -35,7 +35,12 @@ const taskSchema=new mongoose.Schema({
     bookmark:{
         type:Boolean,
         required:[true,"Fill all fields"],
+    },
+    userId:{
+        type:String,
+        required:true
     }
+    
 
 })
 

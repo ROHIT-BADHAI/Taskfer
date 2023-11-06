@@ -9,7 +9,6 @@ function UpdateTask() {
   const navigate = useNavigate();
   const { editTask } = useTaskContext();
   const location = useLocation();
-  const { editBookmarked } = useBookmarkContext();
   const { _id, date, deadline, details, title, priority, status, bookmark } =
     location.state;
   const [task, setTask] = useState({
@@ -32,8 +31,7 @@ function UpdateTask() {
     }
     Toast("Task Updated Successfully!!", "success");
     editTask({ _id: _id, ...task, date: date });
-    editBookmarked({ _id: _id, ...task, date: date });
-    navigate("/");
+     navigate("/");
   }
   function handleChange(e) {
     const { name, value } = e.target;

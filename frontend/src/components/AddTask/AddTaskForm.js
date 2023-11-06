@@ -28,7 +28,7 @@ function AddTaskForm() {
     }
     const formattedDate = moment().format("MMMM Do YYYY, h:mm a");
     addTask({ _id: uuid(), ...task, date: formattedDate });
-    Toast("Task Added Successfully!!", "success");
+    
     navigate('/')
   }
   function handleChange(e) {

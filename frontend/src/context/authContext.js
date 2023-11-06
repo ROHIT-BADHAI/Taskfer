@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import React from 'react'
 
 const authContext=createContext({
@@ -8,13 +8,23 @@ const authContext=createContext({
 })
 
 export const  AuthContextProvider=({children})=>{
-    const [user,setUser]=useState(null);
+  const [user,setUser]=useState(null);
+
+  useEffect(()=>{
+    const user=JSON.parse(localStorage.getItem('user'))
+    if(user) login(user)
+  },[])
+
     function login(userData) {
-        setUser(userData)
+      console.log(userData);
+      setUser(userData)
     }
+
     function logout(){
         setUser(null)
+        localStorage.removeItem('user')
     }
+
 
     return (
         <authContext.Provider

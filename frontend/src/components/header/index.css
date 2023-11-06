@@ -31,4 +31,5 @@
 
 .logo{
   cursor: pointer;
+  min-width: 8rem;
 }

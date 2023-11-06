@@ -4,6 +4,7 @@ import { useTaskContext } from "./TaskContext";
 const bookmarkContext = createContext({
   addBookmark: () => {},
   removeBookmark: () => {},
+  editBookmarked:()=>{}
 });
 export function BookmarkContextProvider({ children }) {
   const { editTask } = useTaskContext();
