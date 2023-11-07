@@ -74,6 +74,7 @@ export function TaskContextProvider({ children }) {
   }
 
   function addTask(taskItem) {
+    console.log(user);
     if (user.token) {
       setIsLoading(true)
       axios.post(taskferServer+"/tasks", taskItem, {

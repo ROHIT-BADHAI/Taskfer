@@ -34,7 +34,7 @@ function SignUp() {
     try{
       setIsLoading(true)
     const response = await axios.post(taskferServer+"/signup", user);
-      login(user);
+      login(response.data);
       localStorage.setItem("user", JSON.stringify(response.data));
       setIsLoading(false)
       Toast("Login Successful!","success")
