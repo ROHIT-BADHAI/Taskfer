@@ -4,6 +4,7 @@ import { Toast } from "../../components/Toast/Toast";
 import React, { useState } from "react";
 import { useAuthContext } from "../../context/authContext";
 import { Link } from "react-router-dom";
+import Loading from '../../assests/Loading.gif'
 const taskferServer="https://taskferserver.vercel.app"
 function SignUp() {
   const { login } = useAuthContext();
@@ -11,6 +12,7 @@ function SignUp() {
     email: "",
     password: "",
   });
+  const [isLoading,setIsLoading]=useState(false)
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({
@@ -30,16 +32,20 @@ function SignUp() {
       return;
     }
     try{
+      setIsLoading(true)
     const response = await axios.post(taskferServer+"/signup", user);
       login(user);
       localStorage.setItem("user", JSON.stringify(response.data));
+      setIsLoading(false)
+      Toast("Login Successful!","success")
     }
     catch(err){
+      setIsLoading(false)
     Toast(err.response.data.err,"error")
     }
   };
   return (
-    <div className="addForm">
+    isLoading===false ? <div className="addForm">
       <div className="form-container" onSubmit={handleSubmit}>
         <form>
         <div className="form-item">
@@ -79,6 +85,8 @@ function SignUp() {
         </form>
       </div>
     </div>
+    :
+    <img style={{height:"15rem",width:"15rem"}} src={Loading} alt="Loading..."/>
   );
 }
 

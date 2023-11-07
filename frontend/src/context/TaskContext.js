@@ -9,21 +9,25 @@ const taskContext = createContext({
   removeTask: () => {},
   addTask: () => {},
   searchWord: "",
+  isLoading:false,
 });
 export function TaskContextProvider({ children }) {
   const { user } = useAuthContext();
   const [task, setTask] = useState([]);
   const [searchWord, setSearchWord] = useState("");
+  const [isLoading,setIsLoading]=useState(false);
   useEffect(() => {
-    
+    if(!user) setTask([])
     
     let getData = async () => {
+      setIsLoading(true)
       let data = await axios.get(taskferServer+"/tasks", {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       });
       setTask(data.data);
+      setIsLoading(false)
     };
     try {
       if (user?.token) getData();
@@ -34,6 +38,7 @@ export function TaskContextProvider({ children }) {
 
   async function removeTask(_id) {
     if (user.token) {
+      setIsLoading(true)
       await axios.delete(taskferServer+`/tasks/${_id}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -43,12 +48,14 @@ export function TaskContextProvider({ children }) {
         return item._id !== _id;
       });
       setTask(newtask);
+      setIsLoading(false)
       Toast("Task deleted Successfully!!", "error");
     } else Toast("Please Login!", "warning");
   }
 
   async function editTask(editedTask) {
     if (user.token) {
+      setIsLoading(true)
       await axios.put(taskferServer+`/tasks/${editedTask._id}`,
         editedTask,
         {
@@ -56,17 +63,19 @@ export function TaskContextProvider({ children }) {
             Authorization: `Bearer ${user.token}`,
           },
         }
-      );
+      ); 
       setTask(
         task.map((item) => {
           return item._id === editedTask._id ? editedTask : item;
         })
       );
+      setIsLoading(false)
     } else Toast("Please Login!", "warning");
   }
 
   function addTask(taskItem) {
     if (user.token) {
+      setIsLoading(true)
       axios.post(taskferServer+"/tasks", taskItem, {
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -75,6 +84,7 @@ export function TaskContextProvider({ children }) {
       const temp = task;
       temp.unshift(taskItem);
       setTask(temp);
+      setIsLoading(false)
       Toast("Task Added Successfully!!", "success");
     } else Toast("Please Login!", "warning");
   }
@@ -88,6 +98,7 @@ export function TaskContextProvider({ children }) {
         setSearchWord,
         searchWord,
         setTask,
+        isLoading
       }}
     >
       {children}
@@ -104,6 +115,7 @@ export function useTaskContext() {
     searchWord,
     setSearchWord,
     setTask,
+    isLoading
   } = useContext(taskContext);
   return {
     task,
@@ -113,5 +125,6 @@ export function useTaskContext() {
     searchWord,
     setSearchWord,
     setTask,
+    isLoading
   };
 }

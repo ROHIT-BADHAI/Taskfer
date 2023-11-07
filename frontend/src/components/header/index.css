@@ -32,4 +32,8 @@
 .logo{
   cursor: pointer;
   min-width: 8rem;
+  font-family: 'Pattaya', sans-serif;
+  font-weight:bolder;
+  color: rgb(195, 205, 50);
+  font-size:xx-large;
 }

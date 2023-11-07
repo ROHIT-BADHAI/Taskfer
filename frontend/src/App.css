@@ -6,7 +6,7 @@
   --button-color: #ff4668;
 }
 body{
-  /* font-family: 'Changa', sans-serif; */
+  font-family: 'Changa', sans-serif;
   font-family: 'DM Serif Display', serif;
   color: var(--text-color);
   background-color: black;
